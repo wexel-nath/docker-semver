@@ -22,5 +22,3 @@ FROM alpine:latest
 
 COPY --from=builder /go/bin/app /usr/local/bin/docker-semver
 RUN chmod +x /usr/local/bin/docker-semver
-
-ENTRYPOINT ["docker-semver"]
