@@ -22,7 +22,7 @@ docker-semver reads the first word in the commit message. It is case-insensitive
 * MAJOR: incompatible API changes
 * minor: add functionality in a backwards compatible manner
 * patch some fixes <-- colon is optional
-* some commite message <-- increments a patch version by default 
+* some commit message <-- increments a patch version by default 
 
 ### Notes
 * If no semantic versions are found, docker-semver will return the tags:
@@ -57,9 +57,9 @@ TAGS=$(docker run \
 [ $(echo "$TAGS" | wc -w) != "3" ] && exit 1
 
 for tag in $TAGS; do
-[ -z "$MAJOR_TAG" ] && export MAJOR_TAG="$tag" && continue
-[ -z "$MINOR_TAG" ] && export MINOR_TAG="$tag" && continue
-[ -z "$PATCH_TAG" ] && export PATCH_TAG="$tag" && break
+    [ -z "$MAJOR_TAG" ] && export MAJOR_TAG="$tag" && continue
+    [ -z "$MINOR_TAG" ] && export MINOR_TAG="$tag" && continue
+    [ -z "$PATCH_TAG" ] && export PATCH_TAG="$tag" && break
 done
 
 echo $MAJOR_TAG // 1
