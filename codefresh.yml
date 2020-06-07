@@ -1,0 +1,40 @@
+version: "1.0"
+
+steps:
+  clone:
+    title: "Cloning repository"
+    type: "git-clone"
+    repo: "wexel-nath/docker-semver"
+    revision: "${{CF_BRANCH}}"
+    git: "github"
+
+  semver_tags:
+    title: "Setting semantic version tags"
+    type: "freestyle"
+    image: "wexel/docker-semver:latest"
+    environment:
+      - IMAGE_TAGS_URL=https://registry.hub.docker.com/v2/repositories/wexel/docker-semver/tags
+      - GIT_COMMIT_MSG=${{CF_COMMIT_MESSAGE}}
+    commands:
+      - >-
+        export TAGS=$(docker-semver);
+        [ $(echo "$TAGS" | wc -w) != "3" ] && exit 1
+      - >-
+        for tag in $TAGS; do
+        [ -z "$MAJOR_TAG" ] && export MAJOR_TAG="$tag" && continue;
+        [ -z "$MINOR_TAG" ] && export MINOR_TAG="$tag" && continue;
+        [ -z "$PATCH_TAG" ] && export PATCH_TAG="$tag" && break;
+        done
+      - cf_export MAJOR_TAG MINOR_TAG PATCH_TAG
+
+  build_api:
+    title: "Building image"
+    type: "build"
+    image_name: "wexel/docker-semver"
+    tags:
+      - "latest"
+      - "${{MAJOR_TAG}}"
+      - "${{MINOR_TAG}}"
+      - "${{PATCH_TAG}}"
+    working_directory: "${{clone}}"
+    dockerfile: "Dockerfile"
