@@ -1,4 +1,4 @@
-# docker-semver [![Codefresh build status](https://g.codefresh.io/api/badges/pipeline/wexel/Utils%2Fsemver?branch=master&key=eyJhbGciOiJIUzI1NiJ9.NWVjODc4OTNhNjJlNzAwZDU0ZDUwYmIx.wCWD3CFfgsDRWQY-K2COubziUQaUEJuZ3sjKHQ1roEQ&type=cf-1)](https%3A%2F%2Fg.codefresh.io%2Fpipelines%2Fsemver%2Fbuilds%3FrepoOwner%3Dwexel-nath%26repoName%3Ddocker-semver%26serviceName%3Dwexel-nath%252Fdocker-semver%26filter%3Dtrigger%3Abuild~Build%3Bbranch%3Amaster%3Bpipeline%3A5edd7c3f8b63eaf20d2e9437~semver)
+# docker-semver [![Codefresh build status](https://g.codefresh.io/api/badges/pipeline/wexel/Utils%2Fsemver?branch=master&key=eyJhbGciOiJIUzI1NiJ9.NWVjODc4OTNhNjJlNzAwZDU0ZDUwYmIx.wCWD3CFfgsDRWQY-K2COubziUQaUEJuZ3sjKHQ1roEQ&type=cf-1)](https://g.codefresh.io/pipelines/semver/builds?repoOwner=wexel-nath&repoName=docker-semver&serviceName=wexel-nath%2Fdocker-semver&filter=trigger:build~Build;branch:master;pipeline:5edd7c3f8b63eaf20d2e9437~semver)
 Automate docker image [Semantic Versioning](https://semver.org/) with commit messages.
 
 Given a docker IMAGE_TAGS_URL, docker-semver will find the current patch semantic version,
